@@ -1,5 +1,36 @@
 # Motion Graphic Generator
 
+**Make motion graphics by writing plain HTML/CSS, and get back a video with a
+see-through (transparent) background that you can drop straight onto a layer in
+Premiere Pro, DaVinci Resolve, Final Cut, or any editor.**
+
+## What it does (in plain words)
+Normally, building animated lower-thirds, chapter titles, callouts, and intros
+means learning heavy motion-graphics software (After Effects, etc.). This project
+lets you describe the animation as a simple web page — text, shapes, colors, and a
+CSS `@keyframes` animation — and it renders that page into a **transparent video
+clip**. "Transparent" means there's no background box around your graphic: only the
+text/shapes are visible, so when you place the clip over your footage in an editor,
+your video shows through behind it, exactly like a professional overlay.
+
+Under the hood it loads your page in a real (headless) Chrome browser, screenshots
+every frame, and stitches them into a **ProRes 4444 `.mov`** (the high-quality format
+editors use for transparency) — then automatically checks, pixel by pixel, that the
+transparency is actually there before handing you the file.
+
+## Who it's for / use cases
+- **Video editors / YouTubers / podcasters** who want clean, on-brand overlays
+  (chapter breaks, name tags, stat callouts, intros/outros) without learning After Effects.
+- **Anyone comfortable with basic HTML/CSS** (or an AI assistant) who'd rather
+  "design in code" and reuse/template graphics across many episodes.
+- **Batch work:** render one design with dozens of different text values at once
+  (e.g. 14 chapter titles → 14 ready-to-edit clips).
+
+> Built on top of HeyGen **HyperFrames** (the headless-Chrome renderer) + **ffmpeg**.
+> Animation is pure CSS — no After Effects, no GSAP, no JavaScript animation needed.
+
+---
+
 Turn HTML/CSS animations into **transparent video** (ProRes 4444 `.mov` / VP9 `.webm`)
 for editing in Premiere. One engine, many projects.
 
