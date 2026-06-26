@@ -4,6 +4,11 @@
 see-through (transparent) background that you can drop straight onto a layer in
 Premiere Pro, DaVinci Resolve, Final Cut, or any editor.**
 
+![Chapter-break overlay animating over a transparency checkerboard](docs/demo-chapter-break.gif)
+
+<sub>↑ A chapter-break clip from this repo. The grey checkerboard = transparency:
+there's no background, so in your editor your footage shows through behind it.</sub>
+
 ## What it does (in plain words)
 Normally, building animated lower-thirds, chapter titles, callouts, and intros
 means learning heavy motion-graphics software (After Effects, etc.). This project
