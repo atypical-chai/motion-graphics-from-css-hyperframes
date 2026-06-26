@@ -34,6 +34,25 @@ transparency is actually there before handing you the file.
 > Built on top of HeyGen **HyperFrames** (the headless-Chrome renderer) + **ffmpeg**.
 > Animation is pure CSS — no After Effects, no GSAP, no JavaScript animation needed.
 
+## Why this exists
+I make videos and kept hitting the same wall: I needed **custom** motion graphics,
+but AI video generators give you almost no control and wildly unpredictable
+results. Then I noticed something — when I'd discuss a design with an AI assistant
+like Claude, it would already hand me **HTML/CSS**. So the question became: *what if
+I could turn that HTML straight into a usable video clip?*
+
+That's all this is — the missing bridge from "design discussed in HTML" →
+"transparent video clip for any editor." If you already design in code (or let an
+LLM do it for you), you can now get a real motion graphic out the other end,
+instead of fighting a black-box video generator.
+
+## Roadmap (this is an early, working start)
+I'll keep updating this with **new templates and repeatable patterns** for making
+**predictable, customizable** motion graphics — the exact thing AI video tools
+don't give you. Today it's a solid foundation (chapter breaks, lower-thirds,
+callouts, intros via plain CSS); more building blocks are coming. Ideas and
+contributions welcome.
+
 ---
 
 Turn HTML/CSS animations into **transparent video** (ProRes 4444 `.mov` / VP9 `.webm`)
