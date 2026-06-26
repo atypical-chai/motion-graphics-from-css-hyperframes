@@ -3,8 +3,38 @@
 Structure and "where things go" live in `README.md`. The input *format* lives in
 `GENERATOR-PROMPT.md`. This file is the deeper how-to + the traps to avoid.
 
-## The loop for each clip
-1. **Generate** HTML with your AI (`GENERATOR-PROMPT.md`) or copy `templates/_TEMPLATE.html`.
+## Phase 0 — Design lab (path A, optional: when you don't know the look yet)
+Do this in `projects/<project>/css-sandbox/` *before* writing any composition.
+The whole point: iterate the LOOK cheaply in a normal browser, instead of
+spending render time to find out a design doesn't work.
+
+1. **Brief.** You describe the graphic (or paste a prompt with the design context).
+2. **Backdrop.** Drop a real still from the show into the sandbox folder named
+   `frame.jpg` (1920×1080 ideal) so designs are judged over actual footage.
+   Transparent renders are invisible in a browser, so the sandbox fakes the
+   background on purpose.
+3. **Lab page.** The assistant builds a throwaway preview HTML in `css-sandbox/`
+   (e.g. a side-by-side gallery of variations, or a single tunable test page).
+   Open it by double-clicking it; refresh after any change.
+4. **Iterate.** Compare, mix, nudge position/colors/motion together until a
+   direction is locked. Use the controls (sliders, etc.) to read off exact values.
+5. **Lock → leave the sandbox.** The approved look is copied into a real
+   composition (`compositions/`) with the contract attributes, then rendered
+   (Phase 1 below).
+
+**Sandbox ground rules**
+- **Replay button.** Every sandbox page that animates gets a `▶ Replay` button so
+  you can re-watch the entrance on demand (a one-shot play-once is truer to the
+  final render than an infinite loop). The button is sandbox-only — it's dropped
+  when the design is moved to a composition.
+- **Never rendered.** Files in `css-sandbox/` are for your eyes only; only
+  `compositions/` files become video. Match the sandbox's real pixel sizes
+  (font-size, padding) so the scaled-down preview is proportionally accurate.
+
+## Phase 1 — The loop for each clip
+(Start here directly for **path B / bypass**, when the design is already decided.)
+1. **Generate / author** the composition HTML with your AI (`GENERATOR-PROMPT.md`),
+   copy `templates/_TEMPLATE.html`, or paste the locked design from Phase 0.
 2. **Save** it under the project: `projects/<project>/compositions/<name>.html`
    (unique `data-composition-id`, correct `data-duration` in seconds).
 3. **Preview** (optional, live): `npx hyperframes preview -c projects/<project>/compositions/<name>.html` → open the URL it prints.
@@ -15,9 +45,15 @@ Structure and "where things go" live in `README.md`. The input *format* lives in
 5. **Confirm** the verify prints `[PASS]`, then drag `projects/<project>/renders/<name>.mov` into Premiere.
 
 ## What you bring me
-Just the **animation description** (or a rough HTML/CSS draft) in one of the three shapes
-in `GENERATOR-PROMPT.md`. I turn it into composition file(s) under the right project,
-render, and verify the alpha — then hand you the `.mov`.
+Either:
+- **A design brief** (rough idea, references, or a prompt with design context) — and we
+  iterate in the **css-sandbox** (Phase 0) until the look is locked, *then* I build and
+  render the composition; or
+- **A decided design** (description or HTML/CSS draft) in one of the three shapes in
+  `GENERATOR-PROMPT.md` — and I skip the sandbox, build the composition file(s) under the
+  right project, render, and verify the alpha (Phase 1).
+
+Either way you get back verified `.mov` files in `renders/`.
 
 ## The traps (all handled for you)
 - **"Zero duration" render failure** → every root needs `data-duration="<seconds>"`. The template + contract enforce it.

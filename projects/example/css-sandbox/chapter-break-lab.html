@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+  EXAMPLE design-lab page (sandbox only, NOT rendered).
+  This shows the Phase-0 pattern from WORKFLOW.md: preview a design in a normal
+  browser BEFORE committing it to a composition.
+
+  HOW TO USE:
+    1. (Optional) drop a 1920x1080 still named `frame.jpg` into this folder to
+       preview over real footage. No frame = neutral dark backdrop.
+    2. Double-click this file to open it in a browser; refresh after edits.
+    3. Use the Replay button to re-watch the entrance (sandbox ground rule:
+       every animated sandbox page gets a replay button for testing).
+    4. When you like a design, it gets copied into ../compositions/ as a real
+       render-ready file. Sandbox files are never rendered.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Example — Chapter Break design lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --kraft:#ECE2CF; --paper:#F3ECDB; --cream:#F6EDD6; --ink:#232A3A;
+    --green:#3F8A5A; --blue:#2F5AA8; --yellow:#E6B53C; --coral:#DF8A64;
+    --scale: 0.60;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:28px 32px 60px; background:#15171f; color:var(--cream);
+        font-family:'Space Mono',monospace; }
+  h1{ font-size:19px; letter-spacing:.04em; margin:0 0 4px; }
+  .sub{ font-size:13px; opacity:.7; margin:0 0 18px; max-width:780px; line-height:1.5; }
+
+  .screen{ width: calc(1920px * var(--scale)); height: calc(1080px * var(--scale));
+           position:relative; overflow:hidden; border-radius:10px; border:1px solid #2c2f3a; background:#232A3A; }
+  .stage{ width:1920px; height:1080px; position:absolute; top:0; left:0;
+          transform: scale(var(--scale)); transform-origin: top left;
+          background-image:url('frame.jpg'); background-size:cover; background-position:center; }
+
+  .cb{ position:absolute; bottom:0; left:0; z-index:10;
+       font-family:'Space Mono',monospace; color:var(--ink); letter-spacing:0.04em; white-space:nowrap;
+       display:flex; align-items:stretch; border-radius:0 22px 0 0; overflow:hidden;
+       border-top:5px solid var(--ink); border-right:5px solid var(--ink); }
+  .cb.run{ animation: cbIn 1.0s cubic-bezier(.2,.7,.2,1) both; }
+  .cb .chip{ background:var(--coral); color:var(--cream); font-weight:700; font-size:34px;
+             display:flex; align-items:center; padding:0 26px; }
+  .cb .body{ background:var(--cream); padding:22px 40px; display:flex; align-items:center; }
+  .cb .t{ font-size:31px; text-transform:uppercase; }
+  @keyframes cbIn{ 0%{ transform: translateX(-130%); } 100%{ transform: translateX(0); } }
+
+  .controls{ display:flex; align-items:center; gap:22px; margin-top:18px; }
+  button{ font-family:'Space Mono',monospace; font-size:14px; font-weight:700; cursor:pointer;
+          background:var(--yellow); color:var(--ink); border:none; border-radius:8px; padding:11px 20px; }
+  button:hover{ filter:brightness(1.05); }
+</style>
+</head>
+<body>
+  <h1>Example &mdash; Chapter Break design lab</h1>
+  <p class="sub">Sample Phase-0 sandbox page. The strip slides in from the left; hit
+     <b>Replay</b> to watch it again. Drop a <b>frame.jpg</b> in this folder to preview
+     over real footage. This file is never rendered &mdash; see WORKFLOW.md.</p>
+
+  <div class="screen"><div class="stage">
+    <div class="cb run" id="cb">
+      <div class="chip">01</div>
+      <div class="body"><span class="t">Introduction</span></div>
+    </div>
+  </div></div>
+
+  <div class="controls">
+    <button id="replay">&#9654; Replay</button>
+  </div>
+
+  <script>
+    const cb = document.getElementById('cb');
+    document.getElementById('replay').addEventListener('click', () => {
+      cb.classList.remove('run');
+      void cb.offsetWidth;          // force reflow so the animation restarts
+      cb.classList.add('run');
+    });
+  </script>
+</body>
+</html>

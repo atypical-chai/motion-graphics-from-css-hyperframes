@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  EXAMPLE composition — "number chip" chapter break (parameterized)
+  ============================================================================
+  This is a SAMPLE so you can see the structure. Copy projects/example/ to start
+  your own project (your real projects are git-ignored and stay local).
+
+  ONE design, swappable text: the number + title are VARIABLES (declared on the
+  <html> tag), so many chapters render from this single file.
+
+  Render all rows of the sample batch:
+    tools\render-batch.ps1 example chapter-break-chip chapter-breaks
+  Render one quick test:
+    npx hyperframes render -c projects\example\compositions\chapter-break-chip.html ^
+      --variables "{\"num\":\"01\",\"title\":\"Introduction\"}" ^
+      --format mov --output projects\example\renders\ch-01-test.mov
+
+  See README.md / WORKFLOW.md / GENERATOR-PROMPT.md at the repo root for the rules.
+-->
+<html lang="en"
+  data-composition-variables='[
+    {"id":"num","type":"string","label":"Chapter number","default":"01"},
+    {"id":"title","type":"string","label":"Chapter title","default":"Introduction"}
+  ]'>
+<head>
+<meta charset="UTF-8">
+<title>Example — Chapter Break (number chip)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --kraft:#ECE2CF; --paper:#F3ECDB; --cream:#F6EDD6; --ink:#232A3A;
+    --green:#3F8A5A; --blue:#2F5AA8; --yellow:#E6B53C; --coral:#DF8A64;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0; background:transparent;}
+
+  .cb{
+    position:absolute; bottom:0; left:0; z-index:10;   /* bottom-left corner */
+    font-family:'Space Mono',monospace; color:var(--ink);
+    letter-spacing:0.04em; white-space:nowrap;
+    display:flex; align-items:stretch;
+    border-radius:0 22px 0 0; overflow:hidden;
+    border-top:5px solid var(--ink); border-right:5px solid var(--ink);
+    animation: cbLoop 5s ease-in-out infinite;
+  }
+  .cb .chip{ background:var(--coral); color:var(--cream); font-weight:700;
+             font-size:34px; display:flex; align-items:center; padding:0 26px; }
+  .cb .body{ background:var(--cream); padding:22px 40px; display:flex; align-items:center; }
+  .cb .t{ font-size:31px; text-transform:uppercase; }
+
+  /* Slide in from the left -> hold -> slide out. 5s = data-duration. */
+  @keyframes cbLoop{
+    0%       { transform: translateX(-130%); animation-timing-function: cubic-bezier(.2,.7,.2,1); }
+    20%      { transform: translateX(0); }
+    74%      { transform: translateX(0); }
+    88%, 100%{ transform: translateX(-130%); }
+  }
+</style>
+</head>
+<body>
+  <div id="root" data-composition-id="example-chapter-break-chip"
+       data-start="0" data-duration="5" data-width="1920" data-height="1080">
+    <div id="strip" class="cb clip" data-start="0" data-duration="5" data-track-index="0">
+      <div class="chip"><span id="ch-num">01</span></div>
+      <div class="body"><span class="t" id="ch-title">Introduction</span></div>
+    </div>
+  </div>
+
+  <!-- Fixed, non-animating JS: reads the variables, fills the text. -->
+  <script>
+    const v = window.__hyperframes.getVariables();
+    document.getElementById('ch-num').textContent = v.num;
+    document.getElementById('ch-title').textContent = v.title;
+  </script>
+</body>
+</html>

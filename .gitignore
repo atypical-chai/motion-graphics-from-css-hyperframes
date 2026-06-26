@@ -2,12 +2,28 @@
 node_modules/
 .agents/
 
-# rendered video outputs — regenerable, large binaries
+# --- Project work stays LOCAL ---
+# Real project folders (podcast, clients, shows) are your private content and are
+# never pushed. ONLY the shipped `example/` project is tracked, so people who clone
+# the repo can see the folder structure + a working sample. Add new real projects
+# freely — they're excluded automatically.
+projects/*
+!projects/example/
+!projects/example/**
+
+# rendered video outputs — regenerable, large binaries (even for the example)
 projects/*/renders/
 renders/
 
 # archived evaluation / scratch files
 _archive/
+
+# design-lab backdrop stills — episode-specific media, not engine code.
+# (Keep the sandbox .html; drop your own frame in to preview. See WORKFLOW.md Phase 0.)
+projects/*/css-sandbox/*.jpg
+projects/*/css-sandbox/*.jpeg
+projects/*/css-sandbox/*.png
+projects/*/css-sandbox/*.webp
 
 # one-time validation media (keep the script + RESULT.md, not the heavy media)
 validation/*.png

@@ -4,6 +4,11 @@ Pick the shape that matches what you need, copy that block into your AI tool, fi
 ALL-CAPS placeholders, then save the output into the folder shown and render. Every
 shape obeys the same **contract** (below) so the file drops straight into the engine.
 
+> Still figuring out the design? Iterate the LOOK first in the **css-sandbox**
+> (browser preview over a real frame, with a replay button) — see Phase 0 in
+> `WORKFLOW.md` — then come back here to produce the final composition. If the design
+> is already decided, just use the shapes below directly.
+
 ## Where to save the output
 | You asked for | Save the file(s) as | Then run |
 |---|---|---|
