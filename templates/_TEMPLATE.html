@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+  ========================================================================
+  HYPERFRAMES COMPOSITION TEMPLATE  —  copy this file to start a new clip
+  ========================================================================
+  HOW TO USE:
+    1. Copy this file to projects\<project>\compositions\<your-clip-name>.html
+    2. Change data-composition-id (below) to a unique name.
+    3. Set data-duration to your clip length in SECONDS (whole loop).
+    4. Replace the demo .box element + @keyframes with your animation.
+    5. Render+verify:  tools\render.ps1 <project> <your-clip-name>
+       e.g.            tools\render.ps1 podcast my-lower-third
+
+  THE 3 RULES THAT MAKE A RENDER WORK (learned the hard way):
+    A) The root <div> MUST have data-duration="<seconds>".  Without it the
+       render fails with "Composition has zero duration".
+    B) Keep the background transparent (html,body{background:transparent})
+       so the export has a real alpha channel for overlays.
+    C) Animations are pure CSS @keyframes — no JavaScript / no GSAP needed.
+  ========================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>__TEMPLATE__</title>
+
+<!-- Fonts: Google Fonts links work — HyperFrames auto-caches them at render. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Your brand palette — reuse across every clip for consistency */
+  :root{
+    --kraft:#ECE2CF; --paper:#F3ECDB; --cream:#F6EDD6; --ink:#232A3A;
+    --green:#3F8A5A; --blue:#2F5AA8; --yellow:#E6B53C; --coral:#DF8A64;
+  }
+  *{ box-sizing:border-box; }
+
+  /* RULE B: transparent background = real alpha in the exported video */
+  html,body{ margin:0; padding:0; background:transparent; }
+
+  /* ---- demo element: delete and replace with your own ---- */
+  .box{
+    position:absolute; bottom:0; left:0;
+    background:var(--cream);
+    border-top:5px solid var(--ink); border-right:5px solid var(--ink);
+    border-radius:0 22px 0 0; padding:22px 49px;
+    animation: demoLoop 4s ease-in-out infinite;   /* duration here should match data-duration */
+  }
+  .box span{
+    font-family:'Space Mono',monospace; color:var(--ink);
+    font-size:31px; white-space:nowrap; letter-spacing:0.04em;
+  }
+  @keyframes demoLoop{
+    0%{ transform:translateX(-110%); }
+    10%{ transform:translateX(0); }
+    70%{ transform:translateX(0); }
+    80%,100%{ transform:translateX(-110%); }
+  }
+  /* -------------------------------------------------------- */
+</style>
+</head>
+<body>
+  <!-- RULE A: data-duration is REQUIRED. data-width/height = canvas size. -->
+  <div id="root" data-composition-id="__CHANGE_ME__"
+       data-start="0" data-duration="4" data-width="1920" data-height="1080">
+
+    <!-- Each animated element is a "clip": give it a stable id + data-start/data-duration/data-track-index -->
+    <div id="hero" class="box clip" data-start="0" data-duration="4" data-track-index="0">
+      <span>REPLACE ME</span>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# dependencies / vendored engine internals (regenerable, not our work)
+node_modules/
+.agents/
+
+# rendered video outputs — regenerable, large binaries
+projects/*/renders/
+renders/
+
+# archived evaluation / scratch files
+_archive/
+
+# one-time validation media (keep the script + RESULT.md, not the heavy media)
+validation/*.png
+validation/*.mov
+validation/*.webm
+
+# logs / temp / OS
+*.log
+_lastrender*
+.DS_Store
+Thumbs.db
