@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE GALLERY · The AI Floor Walk Podcast
+  A catalog of the finalized motion-graphic overlays for this project. Each card shows
+  a small LIVE preview (an embedded, looping mini of the actual preview file) and links
+  to the full-screen version. Render-ready sources live in ../compositions/.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Motion Graphic Templates · AIFW Podcast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#232A3A; --yellow:#E6B53C; }
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:40px 28px 60px; background:#15171e; color:#e8e6df;
+    font-family:'Hanken Grotesk',system-ui,sans-serif; }
+  .wrap{ max-width:1120px; margin:0 auto; }
+  h1{ font-size:30px; margin:0 0 6px; }
+  .lead{ opacity:.8; font-size:15px; line-height:1.6; margin:0 0 6px; }
+  .lead code{ background:#23262f; padding:2px 6px; border-radius:5px; font-size:12px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,340px); justify-content:center; gap:18px; margin-top:28px; }
+  .card{ background:#1d2029; border:1px solid #2c2f3a; border-radius:14px; padding:20px 22px;
+    text-decoration:none; color:inherit; transition:border-color .15s, transform .15s; display:block; }
+  .card:hover{ border-color:var(--yellow); transform:translateY(-2px); }
+  .card h2{ font-size:18px; margin:0 0 8px; }
+  .card p{ font-size:13.5px; line-height:1.55; opacity:.82; margin:0 0 4px; }
+  .card .open{ font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--yellow); }
+  .tag{ display:inline-block; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:#9aa0ad; border:1px solid #343845; border-radius:6px; padding:2px 8px; margin-bottom:10px; }
+
+  /* small LIVE preview embedded under the text. The iframe shows the real preview
+     file scaled down; pointer-events:none lets the click reach the card link. */
+  .thumb{ position:relative; width:100%; height:212px; overflow:hidden; border-radius:10px;
+    border:1px solid #2c2f3a; background:#15171e; margin:6px 0 12px; }
+  .thumb iframe{ position:absolute; top:0; left:0; width:947px; height:680px; border:0;
+    transform:scale(.312); transform-origin:top left; pointer-events:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Motion Graphic Templates <span style="color:var(--yellow)">· AIFW Podcast</span></h1>
+  <p class="lead">Finalized overlays for the trailer/teaser pipeline. Each card has a live looping mini-preview
+     (placeholder backdrop &mdash; no real footage or guest photo baked in). Click a card to open it full-screen.</p>
+  <p class="lead">Render-ready sources live in <code>../compositions/</code> &mdash; swap the text via the matching
+     <code>../batch/*.json</code>, then run <code>tools\render-batch.ps1</code>.</p>
+
+  <div class="grid">
+    <a class="card" href="caption-highlight-chip.html" target="_blank">
+      <span class="tag">Caption</span>
+      <h2>Caption highlight — boxed</h2>
+      <p>Punchy subtitle for trailer moments. Words build in one-by-one; key word(s) land in a yellow box. Sits high to clear the speaker.</p>
+      <div class="thumb"><iframe src="caption-highlight-chip.html" loading="lazy" scrolling="no" title="Caption highlight boxed preview"></iframe></div>
+      <span class="open">Click to open full screen →</span>
+    </a>
+
+    <a class="card" href="caption-highlight-color.html" target="_blank">
+      <span class="tag">Caption · variant</span>
+      <h2>Caption highlight — color-only</h2>
+      <p>Subtler alternative. Whole line fades/rises together; key word just turns yellow and pops slightly bigger (no box).</p>
+      <div class="thumb"><iframe src="caption-highlight-color.html" loading="lazy" scrolling="no" title="Caption highlight color-only preview"></iframe></div>
+      <span class="open">Click to open full screen →</span>
+    </a>
+
+    <a class="card" href="number-slam.html" target="_blank">
+      <span class="tag">Callout</span>
+      <h2>Number slam</h2>
+      <p>Corner stat callout for a big number/claim. Badge slams into the top-right and holds so the speaker stays visible.</p>
+      <div class="thumb"><iframe src="number-slam.html" loading="lazy" scrolling="no" title="Number slam preview"></iframe></div>
+      <span class="open">Click to open full screen →</span>
+    </a>
+
+    <a class="card" href="speaker-id-card.html" target="_blank">
+      <span class="tag">Lower third</span>
+      <h2>Speaker ID card</h2>
+      <p>Guest/host intro. Card slides in from the top-right (text left-aligned); name in brand color + optional award chip.</p>
+      <div class="thumb"><iframe src="speaker-id-card.html" loading="lazy" scrolling="no" title="Speaker ID card preview"></iframe></div>
+      <span class="open">Click to open full screen →</span>
+    </a>
+
+    <a class="card" href="end-card.html" target="_blank">
+      <span class="tag">Outro</span>
+      <h2>End card</h2>
+      <p>Outro tag. "Full episode out now on YouTube" pill fades up bottom-center and holds.</p>
+      <div class="thumb"><iframe src="end-card.html" loading="lazy" scrolling="no" title="End card preview"></iframe></div>
+      <span class="open">Click to open full screen →</span>
+    </a>
+
+    <a class="card" href="chapter-break.html" target="_blank">
+      <span class="tag">Divider</span>
+      <h2>Chapter break</h2>
+      <p>Section divider. Kraft strip slides in from the bottom-left as "NN · TITLE", holds, then slides out.</p>
+      <div class="thumb"><iframe src="chapter-break.html" loading="lazy" scrolling="no" title="Chapter break preview"></iframe></div>
+      <span class="open">Click to open full screen →</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>

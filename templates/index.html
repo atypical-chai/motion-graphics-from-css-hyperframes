@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+  GLOBAL TEMPLATE LIBRARY (cross-project)
+  Each project drops its finalized motion-graphic previews into its own subfolder
+  here (e.g. ./podcast/). Add a new link below whenever a project contributes templates.
+  Self-contained looping previews; no real footage/photos baked in.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Global Motion Graphic Templates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --yellow:#E6B53C; }
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:48px 28px; background:#15171e; color:#e8e6df;
+    font-family:'Hanken Grotesk',system-ui,sans-serif; }
+  .wrap{ max-width:840px; margin:0 auto; }
+  h1{ font-size:30px; margin:0 0 8px; }
+  .lead{ opacity:.8; font-size:15px; line-height:1.6; margin:0 0 28px; }
+  .row{ display:flex; flex-direction:column; gap:14px; }
+  .card{ background:#1d2029; border:1px solid #2c2f3a; border-radius:14px; padding:22px 24px;
+    text-decoration:none; color:inherit; transition:border-color .15s, transform .15s; }
+  .card:hover{ border-color:var(--yellow); transform:translateY(-2px); }
+  .card h2{ font-size:19px; margin:0 0 6px; }
+  .card p{ font-size:13.5px; line-height:1.55; opacity:.82; margin:0 0 10px; }
+  .card .open{ font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--yellow); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Global Motion Graphic Templates</h1>
+  <p class="lead">Reusable, brand-consistent overlay templates collected across projects.
+     Open a project to browse its catalog of looping previews.</p>
+  <div class="row">
+    <a class="card" href="podcast/index.html">
+      <h2>The AI Floor Walk Podcast</h2>
+      <p>Caption highlight (boxed + color-only), number slam, speaker ID card, end card, chapter break.</p>
+      <span class="open">Open project library →</span>
+    </a>
+    <!-- Add more projects here as they contribute templates. -->
+  </div>
+</div>
+</body>
+</html>

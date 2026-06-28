@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE PREVIEW · Number slam — corner stat callout
+  WHERE IT'S USED: punch up a big number / claim. The badge slams into the TOP-RIGHT
+  corner (slight overshoot) and holds, so the speaker stays visible and you can cut
+  wherever you like.
+  This file is a LOOPING PREVIEW only (placeholder backdrop, no real footage).
+  RENDER-READY SOURCE: projects/podcast/compositions/number-slam.html
+  (swap tag / figure / label via projects/podcast/batch/number-slam.json)
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Template · Number slam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Lilita+One&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --kraft:#ECE2CF; --paper:#F3ECDB; --ink:#232A3A; --ink2:#6F6A5C; --cream:#F6EDD6;
+    --green:#3F8A5A; --greenD:#2C6B43; --blue:#2F5AA8; --blueD:#21407A;
+    --yellow:#E6B53C; --yellowD:#C08F1C; --coral:#DF8A64; --coralD:#B5664A;
+    --scale:0.46;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:32px; background:#15171e; color:#e8e6df;
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .tpl-title{ font-size:22px; font-weight:800; margin:0; }
+  .tpl-note{ max-width:calc(1920px * var(--scale)); font-size:14px; line-height:1.55;
+    opacity:.85; margin:0; text-align:center; }
+  .tpl-note b{ color:var(--yellow); }
+  .tpl-note code{ background:#23262f; padding:2px 6px; border-radius:5px; font-size:12px; }
+
+  .screen{ width:calc(1920px * var(--scale)); height:calc(1080px * var(--scale));
+    position:relative; overflow:hidden; border-radius:12px; border:1px solid #2c2f3a;
+    box-shadow:0 10px 40px rgba(0,0,0,.5); }
+  .stage{ width:1920px; height:1080px; position:absolute; top:0; left:0;
+    transform:scale(var(--scale)); transform-origin:top left; }
+  .backdrop{ position:absolute; inset:0; background:linear-gradient(135deg,#454d60,#2d3340 60%,#262b36); }
+  .backdrop::after{ content:'PLACEHOLDER FRAME \00B7 your footage goes here';
+    position:absolute; top:26px; left:50%; transform:translateX(-50%);
+    font-family:'Space Mono',monospace; font-size:22px; letter-spacing:.18em;
+    text-transform:uppercase; color:rgba(255,255,255,.26); }
+  .head{ position:absolute; left:35%; bottom:0; transform:translateX(-50%); width:520px; height:640px; opacity:.5; }
+  .head .skull{ position:absolute; left:50%; top:0; transform:translateX(-50%); width:300px; height:340px; border-radius:48% 48% 44% 44%; background:#1b1f28; }
+  .head .torso{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:520px; height:370px; border-radius:240px 240px 0 0; background:#1b1f28; }
+
+  /* the badge (matches the render composition) */
+  .badge{ position:absolute; top:72px; right:72px;
+    display:inline-flex; flex-direction:column; align-items:flex-start;
+    width:max-content; max-width:680px;
+    background:var(--paper); border:6px solid var(--ink); border-radius:22px;
+    padding:26px 40px 30px; box-shadow:11px 13px 0 var(--ink);
+    animation: slamLoop 6s cubic-bezier(.25,1.7,.4,1) infinite; }
+  .tag{ font-family:'Space Mono',monospace; font-weight:700; font-size:19px;
+    letter-spacing:0.20em; text-transform:uppercase; color:var(--ink2); margin:0 0 6px; }
+  .figure{ font-family:'Lilita One',sans-serif; font-size:108px; line-height:0.9;
+    color:var(--coral); -webkit-text-stroke:5px var(--cream); paint-order:stroke fill;
+    text-shadow:7px 8px 0 var(--coralD); margin:0; }
+  .label{ font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:26px;
+    color:var(--ink); margin:10px 0 0; line-height:1.25; }
+
+  @keyframes slamLoop{
+    0%{opacity:0; transform:translate(48px,12px) scale(.6) rotate(5deg);}
+    7%{transform:translate(0,0) scale(1.05) rotate(-1deg);}
+    11%{opacity:1; transform:translate(0,0) scale(1) rotate(0);}
+    82%{opacity:1; transform:translate(0,0) scale(1) rotate(0);}
+    92%,100%{opacity:0; transform:translate(40px,0) scale(.92);}
+  }
+</style>
+</head>
+<body>
+  <h1 class="tpl-title">Number slam — corner stat callout</h1>
+  <p class="tpl-note"><b>Where it's used:</b> punch up a big number/claim. Badge slams into the top-right and holds so the
+     speaker stays visible. Render from <code>compositions/number-slam.html</code>.</p>
+
+  <div class="screen">
+    <div class="stage">
+      <div class="backdrop"></div>
+      <div class="head"><div class="skull"></div><div class="torso"></div></div>
+      <div class="badge">
+        <p class="tag">Every single year</p>
+        <p class="figure">$160B</p>
+        <p class="label">in profit, just to pay for AI</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

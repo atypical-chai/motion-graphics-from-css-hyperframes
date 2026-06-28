@@ -19,7 +19,8 @@ param(
   [Parameter(Mandatory=$true, Position=0)][string]$Project,
   [Parameter(Mandatory=$true, Position=1)][string]$Name,
   [Parameter(Mandatory=$true, Position=2)][string]$Batch,
-  [int]$Fps = 30
+  [int]$Fps = 60,   # default: every render is 60fps unless overridden
+  [string]$OutDir = ""    # optional: override the output folder (e.g. a 60fps subfolder)
 )
 $ErrorActionPreference = "Stop"
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
@@ -27,7 +28,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 if ($Batch -notlike "*.json") { $Batch = "$Batch.json" }
 $comp     = "projects\$Project\compositions\$Name.html"
 $batchPath= "projects\$Project\batch\$Batch"
-$rendDir  = "projects\$Project\renders"
+$rendDir  = if ($OutDir) { $OutDir } else { "projects\$Project\renders" }
 if (-not (Test-Path $comp))      { Write-Host "ERROR: $comp not found." -ForegroundColor Red; exit 1 }
 if (-not (Test-Path $batchPath)) { Write-Host "ERROR: $batchPath not found." -ForegroundColor Red; exit 1 }
 New-Item -ItemType Directory -Force -Path $rendDir | Out-Null

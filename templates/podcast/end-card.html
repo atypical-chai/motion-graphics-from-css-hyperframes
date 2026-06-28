@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE PREVIEW · End card / outro tag
+  WHERE IT'S USED: end of a clip/teaser to drive viewers to the full video. The
+  "Full episode out now on YouTube" pill fades up bottom-center and holds.
+  This file is a LOOPING PREVIEW only (placeholder backdrop, no real footage).
+  RENDER-READY SOURCE: projects/podcast/compositions/end-card.html
+  (fixed text; edit the composition if the wording changes)
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Template · End card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3ECDB; --ink:#232A3A; --yt:#FF0000; --yellow:#E6B53C;
+    --scale:0.46;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:32px; background:#15171e; color:#e8e6df;
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .tpl-title{ font-size:22px; font-weight:800; margin:0; }
+  .tpl-note{ max-width:calc(1920px * var(--scale)); font-size:14px; line-height:1.55;
+    opacity:.85; margin:0; text-align:center; }
+  .tpl-note b{ color:var(--yellow); }
+  .tpl-note code{ background:#23262f; padding:2px 6px; border-radius:5px; font-size:12px; }
+
+  .screen{ width:calc(1920px * var(--scale)); height:calc(1080px * var(--scale));
+    position:relative; overflow:hidden; border-radius:12px; border:1px solid #2c2f3a;
+    box-shadow:0 10px 40px rgba(0,0,0,.5); }
+  .stage{ width:1920px; height:1080px; position:absolute; top:0; left:0;
+    transform:scale(var(--scale)); transform-origin:top left; }
+  .backdrop{ position:absolute; inset:0; background:linear-gradient(135deg,#454d60,#2d3340 60%,#262b36); }
+  .backdrop::after{ content:'PLACEHOLDER FRAME \00B7 your footage goes here';
+    position:absolute; top:26px; left:50%; transform:translateX(-50%);
+    font-family:'Space Mono',monospace; font-size:22px; letter-spacing:.18em;
+    text-transform:uppercase; color:rgba(255,255,255,.26); }
+  .head{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:520px; height:640px; opacity:.5; }
+  .head .skull{ position:absolute; left:50%; top:0; transform:translateX(-50%); width:300px; height:340px; border-radius:48% 48% 44% 44%; background:#1b1f28; }
+  .head .torso{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:520px; height:370px; border-radius:240px 240px 0 0; background:#1b1f28; }
+
+  /* the outro pill (matches the render composition) */
+  .outro{ position:absolute; left:0; right:0; bottom:120px; display:flex; justify-content:center; }
+  .v-pill{ display:inline-flex; align-items:center; gap:20px;
+    background:var(--paper); border:5px solid var(--ink); border-radius:999px;
+    padding:18px 40px 18px 26px; box-shadow:7px 8px 0 var(--ink);
+    font-family:'Space Mono',monospace; font-weight:700; font-size:36px;
+    letter-spacing:0.03em; color:var(--ink);
+    animation: popLoop 6s cubic-bezier(.22,.61,.36,1) infinite; }
+  .v-pill .yt{ display:block; width:62px; height:auto; flex:none; }
+
+  @keyframes popLoop{
+    0%{opacity:0; transform:translateY(26px) scale(.94);}
+    12%{opacity:1; transform:translateY(0) scale(1);}
+    82%{opacity:1; transform:translateY(0) scale(1);}
+    92%,100%{opacity:0; transform:translateY(14px) scale(.97);}
+  }
+</style>
+</head>
+<body>
+  <h1 class="tpl-title">End card / outro tag</h1>
+  <p class="tpl-note"><b>Where it's used:</b> end of a clip to send viewers to the full video. Pill fades up bottom-center and
+     holds. Render from <code>compositions/end-card.html</code>.</p>
+
+  <div class="screen">
+    <div class="stage">
+      <div class="backdrop"></div>
+      <div class="head"><div class="skull"></div><div class="torso"></div></div>
+      <div class="outro">
+        <div class="v-pill">
+          <svg class="yt" viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg" aria-label="YouTube">
+            <path d="M27.4 3.12a3.52 3.52 0 0 0-2.48-2.49C22.73 0 14 0 14 0S5.27 0 3.08.63A3.52 3.52 0 0 0 .6 3.12 36.7 36.7 0 0 0 0 10a36.7 36.7 0 0 0 .6 6.88 3.52 3.52 0 0 0 2.48 2.49C5.27 20 14 20 14 20s8.73 0 10.92-.63a3.52 3.52 0 0 0 2.48-2.49A36.7 36.7 0 0 0 28 10a36.7 36.7 0 0 0-.6-6.88Z" fill="#FF0000"/>
+            <path d="M11.2 14.29 18.47 10 11.2 5.71Z" fill="#fff"/>
+          </svg>
+          Full episode out now on YouTube
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

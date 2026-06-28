@@ -77,9 +77,12 @@ Motion Graphic Generator/
 │       ├─ css-sandbox/
 │       ├─ compositions/
 │       ├─ batch/
-│       └─ renders/
-├─ templates/
-│   └─ _TEMPLATE.html            ← copy this to start a new animation
+│       ├─ renders/
+│       └─ templates/            ← finished clips for THIS project (local copy)
+├─ templates/                     ← reusable template LIBRARY (tracked, cross-project)
+│   ├─ _TEMPLATE.html            ← copy this to start a new animation
+│   ├─ index.html                ← global gallery: browse every project's templates
+│   └─ <project>/                ← finalized clips from a project (looping previews + index.html)
 ├─ tools/
 │   ├─ render.ps1                ← render ONE clip + verify alpha
 │   ├─ render-batch.ps1          ← render ONE design × MANY text rows
@@ -99,6 +102,7 @@ Motion Graphic Generator/
 | **Your text lists** (for batch) | `projects/<project>/batch/<name>.json` |
 | **The instruction format** for your AI tool | `GENERATOR-PROMPT.md` (paste it into Cursor/Claude) |
 | **Finished videos** | `projects/<project>/renders/` |
+| **Reusable finished-clip templates** (looping previews + gallery) | `templates/<project>/` (tracked) and `projects/<project>/templates/` (local copy) |
 
 ## Two ways to work
 **A. Design lab → lock → render** (when you're still figuring out the look).
@@ -115,6 +119,25 @@ Skip the sandbox entirely: write/paste the composition straight into
 > The sandbox is for your eyes only — those files are NEVER rendered. Only files
 > in `compositions/` get turned into video. This keeps experiments from polluting
 > the things that actually ship.
+
+## Template library (reuse finished clips across episodes/projects)
+Once a clip's design is finalized, save it as a **template** so you (or your AI tool)
+can reuse it later instead of redesigning from scratch.
+
+- **What a template is:** a small, self-contained **looping preview** HTML — the
+  animation playing over a neutral placeholder backdrop (no real footage/photos baked
+  in), with a 1–2 line "where it's used" note embedded right in the file.
+- **Two copies, on purpose:**
+  - `projects/<project>/templates/` — a **local** copy that lives with the project
+    (git-ignored, like the rest of your project work).
+  - `templates/<project>/` — a **tracked, global** copy that builds up a shared library
+    across all your projects.
+- **Browse them:** open `templates/index.html` (the global gallery, links to every
+  project) or a project's own `templates/index.html`. Each card shows a live mini
+  preview and opens full-screen on click.
+- **Templates ≠ renders.** A template is just a *reference preview* of the look. To
+  actually produce video, you still render the matching file in
+  `projects/<project>/compositions/` (the template's header comment points to it).
 
 ## Make a new animation (3 steps — the "bypass" path B)
 1. Get HTML from your AI tool using `GENERATOR-PROMPT.md`, **or** copy `templates/_TEMPLATE.html`.

@@ -62,6 +62,9 @@ https://hyperframes.heygen.com/llms.txt
 - `compositions/` — sub-compositions referenced via `data-composition-src`
 - `meta.json` — project metadata (id, name)
 - `transcript.json` — whisper word-level transcript (if generated)
+- `templates/` — reusable finished-clip **preview library** for this workspace (per-project
+  copies under `projects/<project>/templates/` + a tracked global gallery `templates/index.html`).
+  See `README.md` → *Template library* and `WORKFLOW.md` → *Phase 2*.
 
 ## Linting — ALWAYS RUN AFTER CHANGES
 

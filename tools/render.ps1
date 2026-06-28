@@ -3,9 +3,9 @@
   (+ optional WebM), then AUTO-VERIFY the alpha channel with real pixels.
 
   USAGE (from the project root):
-    tools\render.ps1 podcast chapter-break-b           # MOV only
+    tools\render.ps1 podcast chapter-break-b           # MOV only (60fps default)
     tools\render.ps1 podcast chapter-break-b -WebM     # MOV + WebM
-    tools\render.ps1 podcast chapter-break-b -Fps 30
+    tools\render.ps1 podcast chapter-break-b -Fps 30   # override to 30fps if ever needed
 
   Renders: projects\<Project>\compositions\<Name>.html
         -> projects\<Project>\renders\<Name>.mov
@@ -14,13 +14,14 @@ param(
   [Parameter(Mandatory=$true, Position=0)][string]$Project,
   [Parameter(Mandatory=$true, Position=1)][string]$Name,
   [switch]$WebM,
-  [int]$Fps = 30
+  [int]$Fps = 60,   # default: every render is 60fps unless overridden
+  [string]$OutDir = ""    # optional: override the output folder (e.g. a 60fps subfolder)
 )
 $ErrorActionPreference = "Stop"
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
 $comp    = "projects\$Project\compositions\$Name.html"
-$rendDir = "projects\$Project\renders"
+$rendDir = if ($OutDir) { $OutDir } else { "projects\$Project\renders" }
 if (-not (Test-Path $comp)) {
   Write-Host "ERROR: $comp not found. Available in this project:" -ForegroundColor Red
   Get-ChildItem "projects\$Project\compositions\*.html" -ErrorAction SilentlyContinue | Select-Object Name

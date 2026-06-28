@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE PREVIEW · Speaker ID card (lower-third intro)
+  WHERE IT'S USED: introduce a guest/host. Card slides in from the TOP-RIGHT (text
+  stays left-aligned); name in brand color (green or blue) with an optional award chip.
+  This file is a LOOPING PREVIEW only (placeholder backdrop, NO real person photo).
+  RENDER-READY SOURCE: projects/podcast/compositions/speaker-id-card.html
+  (swap name / title / award / accent via projects/podcast/batch/speaker-id-card.json)
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Template · Speaker ID card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Lilita+One&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --kraft:#ECE2CF; --paper:#F3ECDB; --ink:#232A3A; --ink2:#6F6A5C; --cream:#F6EDD6;
+    --green:#3F8A5A; --greenD:#2C6B43; --blue:#2F5AA8; --blueD:#21407A;
+    --yellow:#E6B53C; --yellowD:#C08F1C; --coral:#DF8A64; --coralD:#B5664A;
+    --scale:0.46;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:32px; background:#15171e; color:#e8e6df;
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .tpl-title{ font-size:22px; font-weight:800; margin:0; }
+  .tpl-note{ max-width:calc(1920px * var(--scale)); font-size:14px; line-height:1.55;
+    opacity:.85; margin:0; text-align:center; }
+  .tpl-note b{ color:var(--yellow); }
+  .tpl-note code{ background:#23262f; padding:2px 6px; border-radius:5px; font-size:12px; }
+
+  .screen{ width:calc(1920px * var(--scale)); height:calc(1080px * var(--scale));
+    position:relative; overflow:hidden; border-radius:12px; border:1px solid #2c2f3a;
+    box-shadow:0 10px 40px rgba(0,0,0,.5); }
+  .stage{ width:1920px; height:1080px; position:absolute; top:0; left:0;
+    transform:scale(var(--scale)); transform-origin:top left; }
+  .backdrop{ position:absolute; inset:0; background:linear-gradient(135deg,#454d60,#2d3340 60%,#262b36); }
+  .backdrop::after{ content:'PLACEHOLDER FRAME \00B7 your footage goes here';
+    position:absolute; top:26px; left:50%; transform:translateX(-50%);
+    font-family:'Space Mono',monospace; font-size:22px; letter-spacing:.18em;
+    text-transform:uppercase; color:rgba(255,255,255,.26); }
+  .head{ position:absolute; left:34%; bottom:0; transform:translateX(-50%); width:520px; height:640px; opacity:.5; }
+  .head .skull{ position:absolute; left:50%; top:0; transform:translateX(-50%); width:300px; height:340px; border-radius:48% 48% 44% 44%; background:#1b1f28; }
+  .head .torso{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:520px; height:370px; border-radius:240px 240px 0 0; background:#1b1f28; }
+
+  /* the card (matches the render composition) */
+  .card{ position:absolute; top:72px; right:72px;
+    display:inline-flex; flex-direction:column; align-items:flex-start;
+    width:max-content; max-width:820px; text-align:left;
+    background:var(--paper); border:5px solid var(--ink); border-radius:18px;
+    padding:30px 44px 34px; box-shadow:9px 11px 0 var(--ink);
+    animation: revealLoop 6s cubic-bezier(.2,.8,.2,1) infinite; }
+  .name{ font-family:'Lilita One',sans-serif; color:var(--green); line-height:0.92;
+    font-size:90px; -webkit-text-stroke:4px var(--cream); paint-order:stroke fill;
+    text-shadow:5px 6px 0 var(--greenD); margin:0; }
+  .role{ font-family:'Hanken Grotesk',sans-serif; font-weight:700; color:var(--ink);
+    font-size:28px; line-height:1.35; margin:14px 0 0; max-width:740px; }
+  .award{ display:inline-block; margin:18px 0 0; background:var(--yellow); color:var(--ink);
+    padding:8px 16px; border-radius:9px; border:3px solid var(--ink);
+    font-family:'Space Mono',monospace; font-weight:700; font-size:16px;
+    letter-spacing:0.14em; text-transform:uppercase; }
+
+  @keyframes revealLoop{
+    0%{opacity:0; transform:translateX(120%);}
+    12%{opacity:1; transform:translateX(0);}
+    82%{opacity:1; transform:translateX(0);}
+    92%,100%{opacity:0; transform:translateX(120%);}
+  }
+</style>
+</head>
+<body>
+  <h1 class="tpl-title">Speaker ID card — lower-third intro</h1>
+  <p class="tpl-note"><b>Where it's used:</b> introduce a guest/host. Card slides in from the top-right (text stays left-aligned);
+     name in brand color + optional award chip. Render from <code>compositions/speaker-id-card.html</code>.</p>
+
+  <div class="screen">
+    <div class="stage">
+      <div class="backdrop"></div>
+      <div class="head"><div class="skull"></div><div class="torso"></div></div>
+      <div class="card">
+        <div class="name">SHANKAR VISHWANATHAN</div>
+        <div class="role">ex-Tata Motors &middot; ex-CIO, Sundaram-Clayton (TVS Group)</div>
+        <span class="award">Digital Transformation of the Year 2024</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -3,14 +3,14 @@
   own verified MOV. Use for "a folder of different clips, each with its own text".
 
   USAGE (from project root):
-    tools\render-all.ps1 podcast
-    tools\render-all.ps1 podcast -Fps 30
+    tools\render-all.ps1 podcast            # 60fps default
+    tools\render-all.ps1 podcast -Fps 30    # override to 30fps if ever needed
 
   Renders every projects\<Project>\compositions\*.html -> projects\<Project>\renders\<name>.mov
 #>
 param(
   [Parameter(Mandatory=$true, Position=0)][string]$Project,
-  [int]$Fps = 30
+  [int]$Fps = 60   # default: every render is 60fps unless overridden
 )
 $ErrorActionPreference = "Stop"
 $compDir = "projects\$Project\compositions"

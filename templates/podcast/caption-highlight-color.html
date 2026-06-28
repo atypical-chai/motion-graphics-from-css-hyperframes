@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE PREVIEW · Caption highlight — COLOR-ONLY ("A" style, the subtle variant)
+  WHERE IT'S USED: calmer/cheaper caption for normal talking moments. The whole line
+  fades + rises in together; the key word simply turns yellow and pops slightly
+  bigger (NO box). Lighter, less "trailer-y" than the boxed version.
+  This file is a LOOPING PREVIEW only (placeholder backdrop, no real footage).
+  NOTE: this is a STYLE VARIANT of the caption highlight. The current render-ready
+  source (compositions/caption-highlight.html) ships the BOXED look; switch the
+  highlight to color-only there if you want to render this variant.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Template · Caption highlight (color-only)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Lilita+One&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --kraft:#ECE2CF; --paper:#F3ECDB; --ink:#232A3A; --ink2:#6F6A5C; --cream:#F6EDD6;
+    --green:#3F8A5A; --greenD:#2C6B43; --blue:#2F5AA8; --blueD:#21407A;
+    --yellow:#E6B53C; --yellowD:#C08F1C; --coral:#DF8A64; --coralD:#B5664A;
+    --scale:0.46;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:32px; background:#15171e; color:#e8e6df;
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .tpl-title{ font-size:22px; font-weight:800; margin:0; }
+  .tpl-note{ max-width:calc(1920px * var(--scale)); font-size:14px; line-height:1.55;
+    opacity:.85; margin:0; text-align:center; }
+  .tpl-note b{ color:var(--yellow); }
+  .tpl-note code{ background:#23262f; padding:2px 6px; border-radius:5px; font-size:12px; }
+
+  .screen{ width:calc(1920px * var(--scale)); height:calc(1080px * var(--scale));
+    position:relative; overflow:hidden; border-radius:12px; border:1px solid #2c2f3a;
+    box-shadow:0 10px 40px rgba(0,0,0,.5); }
+  .stage{ width:1920px; height:1080px; position:absolute; top:0; left:0;
+    transform:scale(var(--scale)); transform-origin:top left; }
+  .backdrop{ position:absolute; inset:0; background:linear-gradient(135deg,#454d60,#2d3340 60%,#262b36); }
+  .backdrop::after{ content:'PLACEHOLDER FRAME \00B7 your footage goes here';
+    position:absolute; top:26px; left:50%; transform:translateX(-50%);
+    font-family:'Space Mono',monospace; font-size:22px; letter-spacing:.18em;
+    text-transform:uppercase; color:rgba(255,255,255,.26); }
+  .head{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:520px; height:640px; opacity:.5; }
+  .head .skull{ position:absolute; left:50%; top:0; transform:translateX(-50%); width:300px; height:340px; border-radius:48% 48% 44% 44%; background:#1b1f28; }
+  .head .torso{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:520px; height:370px; border-radius:240px 240px 0 0; background:#1b1f28; }
+
+  .cap{ position:absolute; left:140px; right:140px; top:56px;
+    font-family:'Hanken Grotesk',sans-serif; font-weight:800;
+    font-size:62px; line-height:1.5; color:var(--cream);
+    text-align:center; letter-spacing:-0.01em;
+    text-shadow:0 3px 14px rgba(0,0,0,0.85), 0 1px 2px rgba(0,0,0,0.9); }
+
+  /* whole line fades/rises in together */
+  .reveal-whole{ opacity:0; animation: wholeLoop 6s ease-in-out infinite; }
+  /* key word: yellow + slightly bigger + a gentle pop (no box) */
+  .hl-color{ color:var(--yellow); font-size:1.06em; }
+  .reveal-whole .pop{ display:inline-block; animation: popEmph 6s ease-in-out infinite; }
+
+  @keyframes wholeLoop{
+    0%{opacity:0; transform:translateY(26px);}
+    8%{opacity:1; transform:translateY(0);}
+    80%{opacity:1; transform:translateY(0);}
+    90%,100%{opacity:0; transform:translateY(10px);}
+  }
+  @keyframes popEmph{
+    0%,8%{transform:scale(1);}
+    14%{transform:scale(1.12);}
+    22%{transform:scale(1);}
+    100%{transform:scale(1);}
+  }
+</style>
+</head>
+<body>
+  <h1 class="tpl-title">Caption highlight — color-only ("A" style, subtle variant)</h1>
+  <p class="tpl-note"><b>Where it's used:</b> calmer caption for normal talking moments. The whole line fades/rises in
+     together; the key word just turns <b>yellow</b> and pops slightly bigger — no box. Lighter than the boxed version.</p>
+
+  <div class="screen">
+    <div class="stage">
+      <div class="backdrop"></div>
+      <div class="head"><div class="skull"></div><div class="torso"></div></div>
+      <div class="cap">
+        <span class="reveal-whole">This is a complete playbook for both
+          <span class="pop hl-color">founders</span> and
+          <span class="pop hl-color">CXOs.</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

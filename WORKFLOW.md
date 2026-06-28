@@ -44,6 +44,22 @@ spending render time to find out a design doesn't work.
    - every clip in a project: `tools\render-all.ps1 <project>`
 5. **Confirm** the verify prints `[PASS]`, then drag `projects/<project>/renders/<name>.mov` into Premiere.
 
+## Phase 2 — Save the finished clip to the template library (optional, recommended)
+Once a design is locked and rendered, keep it as a reusable **template** so it's easy
+to find and reuse on the next episode/project.
+
+1. **Make a looping preview.** A self-contained HTML that plays the animation over a
+   neutral placeholder backdrop (no real footage/guest photos), with a 1–2 line
+   "where it's used" note embedded in the file (header comment + a small on-page caption).
+2. **Save two copies:**
+   - `projects/<project>/templates/<name>.html` — local copy (git-ignored with the project).
+   - `templates/<project>/<name>.html` — tracked, global copy (the shared library).
+3. **Update the galleries.** Each `templates/.../index.html` lists the clips with a live
+   mini-preview; add a card for the new template. The global `templates/index.html`
+   links to each project's gallery.
+4. Remember: the template is only a *preview of the look*. The render-ready source stays
+   in `compositions/` — the template's header comment should point back to it.
+
 ## What you bring me
 Either:
 - **A design brief** (rough idea, references, or a prompt with design context) — and we

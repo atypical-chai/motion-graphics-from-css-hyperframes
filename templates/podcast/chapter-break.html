@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE PREVIEW · Chapter break / section divider
+  WHERE IT'S USED: mark a new section/segment. A kraft strip slides in from the
+  bottom-left reading "NN · TITLE", holds, then slides back out.
+  This file is a LOOPING PREVIEW only (placeholder backdrop, no real footage).
+  RENDER-READY SOURCE: projects/podcast/compositions/chapter-break.html
+  (swap num / title via the batch JSON)
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Template · Chapter break</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --kraft:#ECE2CF; --paper:#F3ECDB; --cream:#F6EDD6; --ink:#232A3A;
+    --green:#3F8A5A; --blue:#2F5AA8; --yellow:#E6B53C; --coral:#DF8A64;
+    --scale:0.46;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:32px; background:#15171e; color:#e8e6df;
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    display:flex; flex-direction:column; align-items:center; gap:16px; }
+  .tpl-title{ font-size:22px; font-weight:800; margin:0; }
+  .tpl-note{ max-width:calc(1920px * var(--scale)); font-size:14px; line-height:1.55;
+    opacity:.85; margin:0; text-align:center; }
+  .tpl-note b{ color:var(--yellow); }
+  .tpl-note code{ background:#23262f; padding:2px 6px; border-radius:5px; font-size:12px; }
+
+  .screen{ width:calc(1920px * var(--scale)); height:calc(1080px * var(--scale));
+    position:relative; overflow:hidden; border-radius:12px; border:1px solid #2c2f3a;
+    box-shadow:0 10px 40px rgba(0,0,0,.5); }
+  .stage{ width:1920px; height:1080px; position:absolute; top:0; left:0;
+    transform:scale(var(--scale)); transform-origin:top left; }
+  .backdrop{ position:absolute; inset:0; background:linear-gradient(135deg,#454d60,#2d3340 60%,#262b36); }
+  .backdrop::after{ content:'PLACEHOLDER FRAME \00B7 your footage goes here';
+    position:absolute; top:26px; left:50%; transform:translateX(-50%);
+    font-family:'Space Mono',monospace; font-size:22px; letter-spacing:.18em;
+    text-transform:uppercase; color:rgba(255,255,255,.26); }
+  .head{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:520px; height:640px; opacity:.5; }
+  .head .skull{ position:absolute; left:50%; top:0; transform:translateX(-50%); width:300px; height:340px; border-radius:48% 48% 44% 44%; background:#1b1f28; }
+  .head .torso{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:520px; height:370px; border-radius:240px 240px 0 0; background:#1b1f28; }
+
+  /* the strip (matches the render composition) */
+  .ch-b-strip{ position:absolute; bottom:0; left:0; background:var(--cream);
+    border-top:5px solid var(--ink); border-right:5px solid var(--ink);
+    border-radius:0 22px 0 0; padding:22px 49px; z-index:10;
+    animation: chBLoop 6s ease-in-out infinite; }
+  .ch-b-strip span{ font-family:'Space Mono',monospace; color:var(--ink); letter-spacing:0.04em;
+    white-space:nowrap; font-size:31px; }
+  @keyframes chBLoop{
+    0%{transform:translateX(-110%);}
+    10%{transform:translateX(0);}
+    78%{transform:translateX(0);}
+    88%,100%{transform:translateX(-110%);}
+  }
+</style>
+</head>
+<body>
+  <h1 class="tpl-title">Chapter break — section divider</h1>
+  <p class="tpl-note"><b>Where it's used:</b> mark a new section/segment. Kraft strip slides in from the bottom-left as
+     "NN · TITLE", holds, then slides out. Render from <code>compositions/chapter-break.html</code>.</p>
+
+  <div class="screen">
+    <div class="stage">
+      <div class="backdrop"></div>
+      <div class="head"><div class="skull"></div><div class="torso"></div></div>
+      <div class="ch-b-strip"><span>03 &middot; PAYING THE VENDOR</span></div>
+    </div>
+  </div>
+</body>
+</html>
